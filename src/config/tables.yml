@@ -1,0 +1,3 @@
+parameters:
+    furexp.postcomment.table.postcomment: %core.table_prefix%postcomments
+    furexp.postcomment.table.like: %core.table_prefix%postcomment_likes

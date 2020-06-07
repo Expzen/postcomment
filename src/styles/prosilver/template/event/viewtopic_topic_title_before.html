@@ -1,0 +1,21 @@
+<!-- INCLUDECSS @furexp_postcomment/main.css -->
+<!-- INCLUDEJS @furexp_postcomment/javascript/postComment.js -->
+
+<div id="postcomment-meta" hidden>
+    {S_FORM_TOKEN}
+    <script>
+        window.postcommentTemplate = {
+            edit_title:"{{ lang('POSTCOMMENT_EDIT_TITLE') | escape('js') }}",
+            edit_confirm_text:"{{ lang('POSTCOMMENT_EDIT_CONFIRM_TEXT') | escape('js') }}",
+            btn_ok:'{{ lang('POSTCOMMENT_BTN_OK') | escape('js') }}',
+            btn_cancel:'{{ lang('POSTCOMMENT_BTN_CANCEL') | escape('js') }}',
+            btn_more:'{{ lang('POSTCOMMENT_TOTAL') | escape('js') }}',
+            btn_less:'{{ lang('POSTCOMMENT_BTN_LESS') | escape('js') }}',
+            delete_title:'{{ lang('POSTCOMMENT_DELETE_TITLE') | escape('js') }}',
+            delete_confirm_text:'{{ lang('POSTCOMMENT_DELETE_CONFIRM_TEXT') | escape('js') }}',
+            preview_count:{{ POSTCOMMENT_PREVIEW_COUNT }},
+        }
+    </script>
+</div>
+
+

@@ -1,0 +1,36 @@
+{
+    "name": "furexp/postcomment",
+    "type": "phpbb-extension",
+    "description": "postComment",
+    "homepage": "https://phpbb.furexp.com",
+    "version": "0.0.1",
+    "time": "2020-01-01",
+    "keywords": [
+        "phpbb",
+        "extension",
+        "postcomment"
+    ],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "wind",
+            "homepage": "https://furexp.com",
+            "email": "",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.7",
+        "composer/installers": "~1.0.0",
+        "phpbb/phpbb": ">=3.2.0"
+    },
+    "require-dev": {
+        "phpbb/epv": "dev-master"
+    },
+    "extra": {
+        "display-name": "PostComment",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2.0"
+        }
+    }
+}

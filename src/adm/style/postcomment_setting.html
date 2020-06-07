@@ -1,0 +1,95 @@
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{{ lang('POSTCOMMENT_TITLE') }}</h1>
+
+<p>{{ lang('POSTCOMMENT_VERSION') ~ lang('COLON') }} <em>{{ POSTCOMMENT_VERSION }}</em></p>
+
+{% if POSTCOMMENT_ERROR %}
+<div class="errorbox">
+    <h3>{{ lang('WARNING') }}</h3>
+    <p>{{ POSTCOMMENT_ERROR }}</p>
+</div>
+{% endif %}
+
+<form id="postcomment_acp" method="POST" method="{{ U_ACTION }}">
+
+    <fieldset>
+        <legend>{{ lang('POSTCOMMENT_SETTINGS_COMMENT') }}</legend>
+
+        <dl>
+            <dt><label for="postcomment_len_max">{{ lang('POSTCOMMENT_LENGTH_MAX') ~ lang('COLON') }}</label><br>
+                <span>{{ lang('POSTCOMMENT_LENGTH_MAX_EXPLAIN') }}</span></dt>
+            <dd><input type="number" name="postcomment_len_max" id="postcomment_len_max" size="10" min="1" max="500"
+                    value="{{ POSTCOMMENT_LEN_MAX }}">&nbsp;</dd>
+        </dl>
+        <dl>
+            <dt><label for="postcomment_len_min">{{ lang('POSTCOMMENT_LENGTH_MIN') ~ lang('COLON') }}</label><br>
+                <span>{{ lang('POSTCOMMENT_LENGTH_MIN_EXPLAIN') }}</span></dt>
+            <dd><input type="number" name="postcomment_len_min" id="postcomment_len_min" size="10" min="0" max="499"
+                    value="{{ POSTCOMMENT_LEN_MIN }}">&nbsp;</dd>
+        </dl>
+        <dl>
+            <dt><label for="postcomment_form_timeout">{{ lang('POSTCOMMENT_FORM_TIMEOUT') ~ lang('COLON') }}</label><br>
+                <span>{{ lang('POSTCOMMENT_FORM_TIMEOUT_EXPLAIN') }}</span></dt>
+            <dd><input type="number" name="postcomment_form_timeout" id="postcomment_form_timeout" size="10" min="0" max="6000"
+                    value="{{ POSTCOMMENT_FORM_TIMEOUT }}">&nbsp;</dd>
+        </dl>
+        <dl>
+            <dt><label for="postcomment_peek_count">{{ lang('POSTCOMMENT_PEEK_COUNT') ~ lang('COLON') }}</label><br>
+                <span>{{ lang('POSTCOMMENT_PEEK_COUNT_EXPLAIN') }}</span></dt>
+            <dd><input type="number" name="postcomment_peek_count" id="postcomment_peek_count" size="10" min="0" max="50"
+                    value="{{ POSTCOMMENT_PEEK_COUNT }}">&nbsp;</dd>
+        </dl>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>{{ lang('POSTCOMMENT_SETTINGS_LIKES') }}</legend>
+        <dl>
+            <span>{{ lang('POSTCOMMENT_SHOW_LIKE_EXPLAIN') }}</span></dt>
+        </dl>
+        <dl>
+            <dt><label for="postcomment_show_like">{{ lang('POSTCOMMENT_SHOW_LIKE') ~ lang('COLON') }}</label><br>
+            <dd>
+                <label><input type="radio" class="radio" name="postcomment_like_count_type" value="1"
+                        {% if POSTCOMMENT_LIKE_COUNT_TYPE == 1 %} id="postcomment_like_count_type" checked="checked" {% endif %}>
+                    {{ lang('POSTCOMMENT_NUMBER') }}</label>
+                <label><input type="radio" class="radio" name="postcomment_like_count_type" value="2"
+                        {% if POSTCOMMENT_LIKE_COUNT_TYPE == 2 %} id="postcomment_like_count_type" checked="checked" {% endif %}>
+                    {{ lang('POSTCOMMENT_PERCENT') }}</label>
+                <label><input type="radio" class="radio" name="postcomment_like_count_type" value="0"
+                        {% if POSTCOMMENT_LIKE_COUNT_TYPE == 0 %} id="postcomment_like_count_type" checked="checked" {% endif %}>
+                    {{ lang('NO') }}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="postcomment_show_dislike">{{ lang('POSTCOMMENT_SHOW_DISLIKE') ~ lang('COLON') }}</label><br>
+            <dd>
+                <label><input type="radio" class="radio" name="postcomment_dislike_count_type" value="1"
+                        {% if POSTCOMMENT_DISLIKE_COUNT_TYPE == 1 %} id="postcomment_dislike_count_type" checked="checked" {% endif %}>
+                    {{ lang('POSTCOMMENT_NUMBER') }}</label>
+                <label><input type="radio" class="radio" name="postcomment_dislike_count_type" value="2"
+                        {% if POSTCOMMENT_DISLIKE_COUNT_TYPE == 2 %} id="postcomment_dislike_count_type" checked="checked" {% endif %}>
+                    {{ lang('POSTCOMMENT_PERCENT') }}</label>
+                <label><input type="radio" class="radio" name="postcomment_dislike_count_type" value="0"
+                        {% if POSTCOMMENT_DISLIKE_COUNT_TYPE == 0 %} id="postcomment_dislike_count_type" checked="checked" {% endif %}>
+                    {{ lang('NO') }}</label>
+            </dd>
+        </dl>
+
+    </fieldset>
+
+    <fieldset>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}">&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}">
+		</p>
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+
+</form>
+
+
+{% INCLUDE 'overall_footer.html' %}
+

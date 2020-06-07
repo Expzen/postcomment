@@ -1,0 +1,78 @@
+{% if POSTCOMMENT_ENABLED %}
+<div class="postcomment postcomment-wrapper" data-post-id="{{ postrow.POST_ID }}">
+    <h3 class="postcomment-header">{{ lang('POSTCOMMENT_TITLE') }}</h3>
+    <div class="postcomment-cooments">
+        <ul class="postcomment-list">
+            {% for comment in postrow.POSTCOMMENT_COMMENTS %}
+            
+            <li class="postcomment-row" data-comment-id="{{ comment.COMMENT_ID }}">
+                <div class="postcomment-avatar">
+                    <a href="">
+                        {{ comment.AVATAR }}
+                    </a>
+                </div>
+                <div class="postcomment-content">
+                    <div class="postcomment-content-header">
+                        <div class="postcomment-content-buttons">
+                            {% if comment.ABLE_EDIT %}
+                            <a class="btn-edit"><i class="fa fa-pencil"></i></a>
+                            {% endif %}
+                            {% if comment.ABLE_DELETE %}
+                            <a class="btn-delete"><i class="fa fa-trash-o"></i></a>
+                            {% endif %}
+                            <span class="postcomment-time">{{ comment.TIME }}</span>
+                        </div>
+                        <a class="postcomment-username"
+                            href="./memberlist.php?mode=viewprofile&u={{ comment.USER_ID }}"
+                            style="color:{{ comment.USER_COLOR }}">{{ comment.USERNAME }}</a>
+                        {% if POSTCOMMENT_LIKE_ENABLED %}
+                        <div class="postcomment-like">
+                            <span class="postcomment-like-count">{{ comment.LIKES }}</span>
+                            {% if comment.BTN_LIKE_ACTIVE %}
+                            <a class="btn-like active"><i class="fa fa-thumbs-up"></i></a>
+                            {% else %}
+                            <a class="btn-like"><i class="fa fa-thumbs-up"></i></a>
+                            {% endif %}
+                            <span class="postcomment-dislike-count">{{ comment.DISLIKES }}</span>
+                            {% if comment.BTN_DISLIKE_ACTIVE %}
+                            <a class="btn-dislike active"><i class="fa fa-thumbs-down"></i></a>
+                            {% else %}
+                            <a class="btn-dislike"><i class="fa fa-thumbs-down"></i></a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="postcomment-text" data-comment="{{ comment.COMMENT_RAW }}">
+                        {{ comment.COMMENT }}
+                    </div>
+                </div>
+            </li>
+
+            {% endfor %}
+        </ul>
+        <div class="text-right">
+            {% if POSTCOMMENT_ALLOW_FETCH %}
+            <button class="postcomment-more" data-count="{{ postrow.POSTCOMMENT_TOTAL }}">
+                {{ postrow.POSTCOMMENT_TOTAL_TEXT }}
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="postcomment-commentbox">
+        {% if POSTCOMMENT_ALLOW_ADD %}
+        <form class="postcomment-form" method="POST" action="./app.php/postcomment/add/{{ postrow.POST_ID }}">
+            <a class="postcomment-avatar" href="./memberlist.php?mode=viewprofile&u={POSTCOMMENT_USER_ID}"
+                data-username="{POSTCOMMENT_USER_NAME}">
+                {{ POSTCOMMENT_USER_AVATAR }}
+                {{ USER_AVATAR }}
+            </a>
+            <input name="comment" class="postcomment-input" />
+            <input type="submit" class="postcomment-send button button-secondary"
+                value="{{ lang('POSTCOMMENT_SEND') }}">
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% else %}
+{{ lang('POSTCOMMENT_NOT_ENABLED') }}
+{% endif %}

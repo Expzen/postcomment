@@ -1,0 +1,44 @@
+furexp_postcomment_api_fetch:
+    path: /postcomment/fetch/{id}
+    methods: [GET]
+    defaults: {_controller: furexp.postcomment.controller.main:fetch}
+    requirements:
+        id: \d+
+furexp_postcomment_api_peek:
+    path: /postcomment/peek/{id}
+    methods: [GET]
+    defaults: {_controller: furexp.postcomment.controller.main:peek}
+furexp_postcomment_api_add:
+    path: /postcomment/add/{id}
+    methods: [POST]
+    defaults: {_controller: furexp.postcomment.controller.main:add}
+    requirements:
+        id: \d+
+furexp_postcomment_api_edit:
+    path: /postcomment/edit/{id}
+    methods: [POST]
+    defaults: {_controller: furexp.postcomment.controller.main:edit}
+    requirements:
+        id: \d+
+furexp_postcomment_api_del:
+    path: /postcomment/del/{id}
+    methods: [POST]
+    defaults: {_controller: furexp.postcomment.controller.main:del}
+    requirements:
+        id: \d+
+furexp_postcomment_api_like:
+    path: /postcomment/like/{id}
+    methods: [POST]
+    defaults: {_controller: furexp.postcomment.controller.main:like}
+    requirements:
+        id: \d+
+
+furexp_postcomment_page_hello:
+    path: /postcomment/hello
+    methods: [GET]
+    defaults: {_controller: furexp.postcomment.controller.main:hello}
+
+furexp_postcomment_test_topic:
+    path: /postcomment/test
+    methods: [GET]
+    defaults: {_controller: furexp.postcomment.controller.main:hello}
